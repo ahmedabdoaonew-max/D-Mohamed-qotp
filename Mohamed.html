@@ -1,0 +1,1552 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>أكاديمية د. محمد قطب | الصحة النفسية والتدريب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b3a5c;
+            --accent: #c8963e;
+            --accent-light: #e0b860;
+            --white: #ffffff;
+            --gray-light: #f1f5f9;
+            --gray: #e2e8f0;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Cairo', sans-serif;
+            background: #f8fafc;
+            color: var(--text);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .navbar.scrolled {
+            padding: 8px 0;
+            background: rgba(13, 27, 42, 0.96);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.3px;
+        }
+        .navbar .logo img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 4px 0;
+            white-space: nowrap;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            border-radius: 2px;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+        .nav-cta {
+            background: var(--accent) !important;
+            color: #0d1b2a !important;
+            padding: 10px 20px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            transition: var(--transition) !important;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav-cta:hover {
+            background: var(--accent-light) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200, 150, 62, 0.35);
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(160deg, #0d1b2a 0%, #13293d 30%, #1b3a5c 60%, #0d1b2a 100%);
+            padding: 140px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(200, 150, 62, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 70%, rgba(200, 150, 62, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            object-fit: cover;
+            box-shadow: 0 0 0 10px rgba(200, 150, 62, 0.15), 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        .hero .profile-img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 0 14px rgba(200, 150, 62, 0.25), 0 24px 60px rgba(0, 0, 0, 0.5);
+        }
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.6rem;
+            font-weight: 900;
+            margin: 20px 0 8px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -0.5px;
+        }
+        .hero .subtitle {
+            color: #94a3b8;
+            font-size: 1.15rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        .hero .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero .badge {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .hero .badge i {
+            color: var(--accent-light);
+        }
+        /* ============ SLIDER ============ */
+        .slider-section {
+            max-width: 1000px;
+            margin: -30px auto 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+        .slider-wrapper {
+            width: 100%;
+            height: 320px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .slides-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 9s infinite ease-in-out;
+        }
+        .slide-card {
+            width: 33.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .slide-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 27, 42, 0.7) 0%, transparent 50%);
+        }
+        .slide-label {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            z-index: 2;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes slideAnimation {
+            0%,
+            28% {
+                transform: translateX(0);
+            }
+            33%,
+            61% {
+                transform: translateX(33.333%);
+            }
+            66%,
+            94% {
+                transform: translateX(66.666%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .slider-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .slider-dots span.active {
+            background: var(--accent);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* ============ SECTIONS ============ */
+        .section {
+            padding: 60px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 4px;
+            margin: 12px auto 0;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 4px;
+        }
+
+        /* ============ DIPLOMA CARDS ============ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+        .diploma-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e8ecf1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .diploma-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: #d4c5a0;
+        }
+        .diploma-card .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        /* price-tag تم حذفه */
+        .diploma-card .card-body {
+            padding: 22px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .diploma-card .card-body h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .diploma-card .card-body p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            flex: 1;
+        }
+        .diploma-card .card-body .features {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--secondary);
+        }
+        .diploma-card .card-body .features li {
+            background: #f1f5f9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .diploma-card .card-body .features li i {
+            color: var(--accent);
+            margin-left: 4px;
+        }
+        .btn-book {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 13px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Cairo', sans-serif;
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+        .btn-book:hover {
+            background: #1b3a5c;
+            box-shadow: 0 8px 25px rgba(27, 58, 92, 0.35);
+            transform: translateY(-2px);
+        }
+        .btn-book.gold {
+            background: var(--accent);
+            color: #0d1b2a;
+        }
+        .btn-book.gold:hover {
+            background: var(--accent-light);
+            box-shadow: 0 8px 25px rgba(200, 150, 62, 0.4);
+        }
+
+        /* ============ ABOUT DOCTOR ============ */
+        .about-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            margin-top: 40px;
+            border: 1px solid #e8ecf1;
+        }
+        .about-section h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .about-section h3 i {
+            color: var(--accent);
+        }
+        .about-section p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        .about-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .highlight-item {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px 15px;
+            border-radius: var(--radius-sm);
+            border: 1px solid #e8ecf1;
+        }
+        .highlight-item .num {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .highlight-item .lbl {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* ============ FAQ ============ */
+        .faq-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px 25px;
+            border: 1px solid #e8ecf1;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e8ecf1;
+            padding: 16px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-question i {
+            color: var(--accent);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+            color: var(--secondary);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            padding: 0 10px;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding: 10px 10px;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--primary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        .footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .footer .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .footer .social-links a:hover {
+            background: var(--accent);
+            color: #0d1b2a;
+            transform: translateY(-3px);
+        }
+        .footer strong {
+            color: var(--accent-light);
+        }
+
+        /* ============ FLOAT NAV ============ */
+        .float-nav {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+        .float-nav a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            color: #fff;
+        }
+        .float-nav .wa {
+            background: #25d366;
+        }
+        .float-nav .wa:hover {
+            background: #1ebc59;
+            transform: scale(1.1);
+        }
+        .float-nav .fb {
+            background: #1877f2;
+        }
+        .float-nav .fb:hover {
+            background: #1666d6;
+            transform: scale(1.1);
+        }
+        .float-nav .tt {
+            background: #000;
+        }
+        .float-nav .tt:hover {
+            background: #222;
+            transform: scale(1.1);
+        }
+        .float-nav .ig {
+            background: #e4405f;
+        }
+        .float-nav .ig:hover {
+            background: #d62d4c;
+            transform: scale(1.1);
+        }
+        .float-nav .call {
+            background: #0d1b2a;
+        }
+        .float-nav .call:hover {
+            background: #1b3a5c;
+            transform: scale(1.1);
+        }      /* ============ MODAL ============ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 30px 25px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            position: relative;
+        }
+        .modal-box h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .modal-box p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+        .modal-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            margin-bottom: 12px;
+            transition: var(--transition);
+            text-align: right;
+        }
+        .modal-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(200, 150, 62, 0.1);
+        }
+        .modal-box .btn-submit {
+            width: 100%;
+            padding: 13px;
+            background: var(--accent);
+            color: #0d1b2a;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: var(--transition);
+        }
+        .modal-box .btn-submit:hover {
+            background: var(--accent-light);
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #94a3b8;
+            transition: var(--transition);
+        }
+        .modal-close:hover {
+            color: #e4405f;
+        }
+        .modal-box .req-note {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-top: 8px;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        /* ============ NEW: TRAINING PROGRAMS SECTION ============ */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e8ecf1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        /* متحرك: صورتان */
+        .program-animated-img {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        .program-animated-img .img-a,
+        .program-animated-img .img-b {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: #e8ecf1;
+            transition: opacity 0.8s ease;
+        }
+        .program-animated-img .img-a {
+            opacity: 1;
+            z-index: 2;
+            animation: fadeSwitchA 4s infinite;
+        }
+        .program-animated-img .img-b {
+            opacity: 0;
+            z-index: 1;
+            animation: fadeSwitchB 4s infinite;
+        }
+        @keyframes fadeSwitchA {
+            0%,
+            45% {
+                opacity: 1;
+            }
+            50%,
+            95% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeSwitchB {
+            0%,
+            45% {
+                opacity: 0;
+            }
+            50%,
+            95% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .program-animated-img .img-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .program-card .program-body {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .program-card .program-body h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .program-card .program-body p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            flex: 1;
+        }
+        .program-card .img-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--accent);
+            color: #0d1b2a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 5;
+            box-shadow: 0 2px 10px rgba(200, 150, 62, 0.3);
+        }
+        /* زر الحجز داخل البرامج */
+        .program-card .btn-book {
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        /* ============ NEW: CV SECTION ============ */
+        .cv-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            margin-top: 40px;
+            border: 1px solid #e8ecf1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .cv-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        .cv-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cv-content h3 i {
+            color: var(--accent);
+        }
+        .cv-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .cv-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .cv-list li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .cv-animated-img {
+            width: 280px;
+            height: 340px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+            border: 1px solid #e8ecf1;
+        }
+        .cv-animated-img .img-a,
+        .cv-animated-img .img-b {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: #e8ecf1;
+            transition: opacity 0.8s ease;
+        }
+        .cv-animated-img .img-a {
+            opacity: 1;
+            z-index: 2;
+            animation: fadeSwitchA 5s infinite;
+        }
+        .cv-animated-img .img-b {
+            opacity: 0;
+            z-index: 1;
+            animation: fadeSwitchB 5s infinite;
+        }
+        .cv-animated-img .img-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes fadeSwitchA {
+            0%,
+            45% {
+                opacity: 1;
+            }
+            50%,
+            95% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeSwitchB {
+            0%,
+            45% {
+                opacity: 0;
+            }
+            50%,
+            95% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background: #0d1b2a;
+                flex-direction: column;
+                padding: 90px 30px 30px;
+                gap: 20px;
+                transition: right 0.35s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .profile-img {
+                width: 130px;
+                height: 130px;
+            }
+            .slider-wrapper {
+                height: 220px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .slide-label {
+                font-size: 1rem;
+                bottom: 16px;
+                left: 16px;
+                right: 16px;
+            }
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            .cv-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cv-animated-img {
+                width: 100%;
+                max-width: 300px;
+                height: 260px;
+            }
+            .container {
+                padding: 0 8px;
+            }
+        }
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .slider-wrapper {
+                height: 170px;
+            }
+            .float-nav a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .float-nav {
+                bottom: 14px;
+                right: 10px;
+                gap: 7px;
+            }
+            .container {
+                padding: 0 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo"><img src="https://i.postimg.cc/NMWqB4LW/FB-IMG-1783377158550.jpg" alt="د. محمد قطب">
+                أكاديمية د. محمد قطب
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#diplomas">الدبلومات</a></li>
+                <li><a href="#programs">البرامج التدريبية</a></li>
+                <li><a href="#about">عن الدكتور</a></li>
+                <li><a href="#cv">السيرة الذاتية</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="القائمة">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="home">
+        <img src="https://i.postimg.cc/NMWqB4LW/FB-IMG-1783377158550.jpg"
+        alt="د. محمد قطب" class="profile-img" loading="eager">
+        <h1>أكاديمية د. محمد قطب</h1>
+        <p class="subtitle">للصحة النفسية والتدريب والاستشارات العلمية</p>
+        <div class="badge-row">
+            <span class="badge"><i class="fas fa-check-circle"></i> شهادات معتمدة</span>
+            <span class="badge"><i class="fas fa-users"></i> نخبة من المدربين</span>
+            <span class="badge"><i class="fas fa-star"></i> خبرة أكاديمية واسعة</span>
+        </div>
+    </section>
+
+    <!-- ==================== SLIDER ==================== -->
+    <div class="slider-section">
+        <div class="slider-wrapper">
+            <div class="slides-track">
+                <div class="slide-card" style="background-image: url('https://i.postimg.cc/VLYHxpNc/IMG-20260707-001740.png');">
+                    <span class="slide-label">🎓 تدريب احترافي معتمد</span>
+                </div>
+                <div class="slide-card" style="background-image: url('https://i.postimg.cc/x1j7r7tk/IMG-20260707-001801.png');">
+                    <span class="slide-label">🧠 صحة نفسية وجودة حياة</span>
+                </div>
+                <div class="slide-card" style="background-image:url('https://i.postimg.cc/ZRtwVDQ8/IMG-20260707-001818.png');">
+                    <span class="slide-label">🏅 شهادات بختم شعار الجمهورية</span>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="active" data-slide="0"></span>
+            <span data-slide="1"></span>
+            <span data-slide="2"></span>
+        </div>
+    </div>
+
+    <!-- ==================== DIPLOMAS ==================== -->
+    <section class="section" id="diplomas">
+        <div class="container">
+            <h2 class="section-title">برامجنا التدريبية</h2>
+            <p class="section-subtitle">اختر الدبلومة المناسبة لك وابدأ رحلة التميز</p>
+            <div class="cards-grid">
+                <!-- بطاقة TOT (تم حذف السعر) -->
+                <div class="diploma-card">
+                    <div class="card-img" style="background-image: url('https://i.postimg.cc/Ssbf4Ykv/IMG-20260707-002206.png');">
+                        <!-- تم حذف <span class="price-tag"> -->
+                    </div>
+                    <div class="card-body">
+                        <h3>🎤 دبلومة إعداد المدربين TOT</h3>
+                        <p>منحة مقدمة لـ 40 متدرب فقط – تأهيل شامل لتصبح مدربًا معتمدًا بمهارات تدريبية عالية المستوى.</p>
+                        <ul class="features">
+                            <li><i class="fas fa-clock"></i> تدريب عملي</li>
+                            <li><i class="fas fa-certificate"></i> شهادة معتمدة</li>
+                            <li><i class="fas fa-graduation-cap"></i> لكلية تربية</li>
+                        </ul>
+                        <button class="btn-book gold" onclick="openModal('دبلومة إعداد المدربين TOT', 'صورة البطاقة + صورة كارنيه كلية تربية')">
+                            🚀 حجز الآن
+                        </button>
+                    </div>
+                </div>
+                <!-- بطاقة الصحة النفسية (تم حذف السعر) -->
+                <div class="diploma-card">
+                    <div class="card-img" style="background-image: url('https://i.postimg.cc/Jzdpfhsj/IMG-20260707-002244.png');">
+                        <!-- تم حذف <span class="price-tag"> -->
+                    </div>
+                    <div class="card-body">
+                        <h3>🧠 دبلومة أخصائي صحة نفسية</h3>
+                        <p>تشمل الاعتمادات والشهادات الرسمية – برنامج متكامل لتأهيل أخصائيين في الصحة النفسية.</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check-circle"></i> اعتماد رسمي</li>
+                            <li><i class="fas fa-file-alt"></i> شهادة موثقة</li>
+                            <li><i class="fas fa-user-md"></i> تدريب إكلينيكي</li>
+                        </ul>
+                        <button class="btn-book" onclick="openModal('دبلومة أخصائي صحة نفسية', 'صورة البطاقة + صورة شخصية')">
+                            🚀 حجز الآن
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NEW: TRAINING PROGRAMS SECTION ==================== -->
+    <section class="section" id="programs">
+        <div class="container">
+            <h2 class="section-title">البرامج التدريبية</h2>
+            <p class="section-subtitle">مجموعة متكاملة من البرامج التدريبية المعتمدة لتطوير مهاراتك</p>
+            <div class="programs-grid">
+                <!-- 1 -->
+                <div class="program-card">
+                    <span class="img-tag">🎓 معتمد</span>
+                    <div class="program-animated-img">
+                        <div class="img-a" style="background-image: url('https://i.postimg.cc/26GQRzGv/IMG-20260707-WA0020.jpg');"></div>
+                        <div class="img-b" style="background-image: url('https://i.postimg.cc/L50j5Nr6/IMG-20260707-WA0019.jpg');"></div>
+                        <div class="img-placeholder">🖼️ صورتان متحركتان<br>أضف روابط الصور</div>
+                    </div>
+                    <div class="program-body">
+                        <h4>برنامج تأهيل اخصائي صحة نفسية وتعديل السلوك</h4>
+                        <p>تأهيل متكامل في الصحة النفسية وتقنيات تعديل السلوك.</p>
+                        <button class="btn-book gold" onclick="openModal('برنامج تأهيل اخصائي صحة نفسية وتعديل السلوك', 'صورة البطاقة')">🚀 حجز الآن</button>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="program-card">
+                    <span class="img-tag">🎓 معتمد</span>
+                    <div class="program-animated-img">
+                        <div class="img-a" style="background-image: url('https://i.postimg.cc/HshtkkmT/IMG-20260707-WA0023.jpg');"></div>
+                        <div class="img-b" style="background-image: url('https://i.postimg.cc/CKyHbrdN/IMG-20260707-WA0021.jpg');"></div>
+                        <div class="img-placeholder">🖼️ صورتان متحركتان<br>أضف روابط الصور</div>
+                    </div>
+                    <div class="program-body">
+                        <h4>برنامج تأهيل مرشد أسري وتربوي</h4>
+                        <p>إعداد مرشدين مؤهلين في المجال الأسري والتربوي.</p>
+                        <button class="btn-book gold" onclick="openModal('برنامج تأهيل مرشد أسري وتربوي', 'صورة البطاقة')">🚀 حجز الآن</button>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="program-card">
+                    <span class="img-tag">🎓 معتمد</span>
+                    <div class="program-animated-img">
+                        <div class="img-a" style="background-image: url('https://i.postimg.cc/Hx92Y0YN/IMG-20260707-WA0027.jpg');"></div>
+                        <div class="img-b" style="background-image: url('https://i.postimg.cc/MHsmRWjM/IMG-20260707-WA0025.jpg');"></div>
+                        <div class="img-placeholder">🖼️ صورتان متحركتان<br>أضف روابط الصور</div>
+                    </div>
+                    <div class="program-body">
+                        <h4>برنامج تأهيل اخصائي اكلينكي</h4>
+                        <p>تدريب عملي ونظري في علم النفس الإكلينيكي.</p>
+                        <button class="btn-book gold" onclick="openModal('برنامج تأهيل اخصائي اكلينكي', 'صورة البطاقة')">🚀 حجز الآن</button>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="program-card">
+                    <span class="img-tag">🎓 معتمد</span>
+                    <div class="program-animated-img">
+                        <div class="img-a" style="background-image: url('https://i.postimg.cc/7PNsw4hd/IMG-20260707-033859.png');"></div>
+                        <div class="img-b" style="background-image: url('https://i.postimg.cc/ZK7wvL8t/IMG-20260707-WA0029.jpg');"></div>
+                        <div class="img-placeholder">🖼️ صورتان متحركتان<br>أضف روابط الصور</div>
+                    </div>
+                    <div class="program-body">
+                        <h4>برنامج تأهيل اخصائي تربية خاصة</h4>
+                        <p>تأهيل متخصص للتعامل مع ذوي الاحتياجات الخاصة.</p>
+                        <button class="btn-book gold" onclick="openModal('برنامج تأهيل اخصائي تربية خاصة', 'صورة البطاقة')">🚀 حجز الآن</button>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="program-card">
+                    <span class="img-tag">🎓 معتمد</span>
+                    <div class="program-animated-img">
+                        <div class="img-a" style="background-image: url('https://i.postimg.cc/d3SVrXQ7/IMG-20260707-WA0014.jpg');"></div>
+                        <div class="img-b" style="background-image: url('https://i.postimg.cc/bJ9GD322/IMG-20260707-WA0009.jpg');"></div>
+                        <div class="img-placeholder">🖼️ صورتان متحركتان<br>أضف روابط الصور</div>
+                    </div>
+                    <div class="program-body">
+                        <h4>برنامج تدريب المدربين TOT</h4>
+                        <p>إعداد مدربين محترفين وفق أحدث المعايير الدولية.</p>
+                        <button class="btn-book gold" onclick="openModal('برنامج تدريب المدربين TOT', 'صورة البطاقة')">🚀 حجز الآن</button>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="program-card">
+                    <span class="img-tag">🎓 معتمد</span>
+                    <div class="program-animated-img">
+                        <div class="img-a" style="background-image: url('https://i.postimg.cc/J0F2b39S/IMG-20260707-WA0006.jpg');"></div>
+                        <div class="img-b" style="background-image: url('https://i.postimg.cc/hGn3bt58/IMG-20260707-WA0007.jpg');"></div>
+                        <div class="img-placeholder">
+                            'https://i.postimg.cc/hGn3bt58/IMG-20260707-WA0007.jpg'
+                            <br>
+                            'https://i.postimg.cc/J0F2b39S/IMG-20260707-WA0006.jpg'
+                            
+                            </div>
+                            
+                    </div>
+                    
+                    <div class="program-body">
+                        <h4>برنامج اخصائي مقاييس نفسية وسلوكيه</h4>
+                        <p>تطبيق وتفسير المقاييس النفسية والسلوكية باحترافية.</p>
+                        <button class="btn-book gold" onclick="openModal('برنامج اخصائي مقاييس نفسية وسلوكيه', 'صورة البطاقة')">🚀 حجز الآن</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT DOCTOR ==================== -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">عن الدكتور محمد قطب</h2>
+            <p class="section-subtitle">مسيرة أكاديمية حافلة بالإنجازات</p>
+            <div class="about-section">
+                <h3><i class="fas fa-user-tie"></i> من هو د. محمد قطب؟</h3>
+                <p>
+                    عضو هيئة تدريب بجامعة شرق بورسعيد، ومدير مركز التدريب والاستشارات العلمية السابق.
+                    حاصل على العديد من الاعتمادات الأكاديمية في مجال الصحة النفسية والتدريب،
+                    ومؤلف كتاب <strong>"سيكولوجية المرأة"</strong> الذي لاقى اهتمامًا واسعًا في الأوساط العلمية.
+                </p>
+                <p>
+                    يمتلك خبرة تمتد لسنوات في تدريب وتأهيل الكوادر البشرية، وتقديم الاستشارات النفسية
+                    بأسلوب علمي يجمع بين النظرية والتطبيق العملي.
+                </p>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="num">+500</div>
+                        <div class="lbl">متدرب ومستفيد</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="num">+15</div>
+                        <div class="lbl">عامًا من الخبرة</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="num">100%</div>
+                        <div class="lbl">اعتماد الشهادات</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="num">كتاب</div>
+                        <div class="lbl">سيكولوجية المرأة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==================== NEW: CV SECTION (السيرة الذاتية) ==================== -->
+    <section class="section" id="cv">
+        <div class="container">
+            <h2 class="section-title">السيرة الذاتية</h2>
+            <p class="section-subtitle">ملخص الإنجازات والخبرات العلمية والعملية</p>
+            <div class="cv-section">
+                <div class="cv-content">
+                    <h3><i class="fas fa-id-card"></i> د. محمد قطب</h3>
+                    <ul class="cv-list">
+                        <li><i class="fas fa-trophy"></i> حاصل على أفضل عضو هيئة التدريس بالجامعة عام 2023 / 2024</li>
+                        <li><i class="fas fa-bullhorn"></i> محاضر معتمد بمركز إعلام مطروح ومركز إعلام بورسعيد التابع للهيئة العامة للإستعلامات التابعة لرئاسة الجمهورية</li>
+                        <li><i class="fas fa-book"></i> مؤلف مجموعة كتب عن السلوك الإنساني وسيكولوجية المرأة:<br>
+                            <span style="font-weight:700;color:var(--accent);">كتاب The doctor</span> – 
+                            <span style="font-weight:700;color:var(--accent);">كتاب عروسة من جهة محترمة</span> – 
+                            <span style="font-weight:700;color:var(--accent);">كتاب كيف تصبح أسعد الناس</span>
+                        </li>
+                        <li><i class="fas fa-university"></i> محاضر معتمد في العديد من الكليات بالجامعات المصرية</li>
+                        <li><i class="fas fa-users-cog"></i> رئيس مجلس إدارة جمعية شباب مصر الخير لتنمية المجتمع</li>
+                        <li><i class="fas fa-briefcase"></i> المدير التنفيذي لمؤسسة التأهيل النفسي ببورسعيد</li>
+                        <li><i class="fas fa-star"></i> المشرف العام على الأكاديمية الدولية للتدريب والاستشارات العلمية</li>
+                    </ul>
+                </div>
+                <div class="cv-animated-img">
+                    <div class="img-a" style="background-image: url('https://i.postimg.cc/tg1w4Mw3/IMG-20260707-033513.png');"></div>
+                    <div class="img-b" style="background-image: url('https://i.postimg.cc/Pxwg2RMG/IMG-20260707-033502.png');"></div>
+                    <div class="img-placeholder">🖼️ صورتان متحركتان<br>أضف روابط الصور</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <p class="section-subtitle">كل ما تريد معرفته عن برامجنا وخدماتنا</p>
+            <div class="faq-section">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">من هو د. محمد قطب؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">عضو هيئة تدريب بجامعة شرق بورسعيد، ومدير مركز التدريب والاستشارات العلمية السابق، ومؤلف كتاب سيكولوجية المرأة.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">ما هي إنجازاته الأكاديمية؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">حقق العديد من الإنجازات في مجال الصحة النفسية والتدريب، وله إسهامات علمية معتمدة في تأهيل المدربين والأخصائيين النفسيين.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">هل الشهادات معتمدة؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">نعم، جميع الشهادات معتمدة وموثقة بختم شعار الجمهورية، ومعترف بها في المؤسسات الأكاديمية والمهنية.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">كيف يمكن الحجز؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">يرجى التوجه إلى أقرب فرع، متواجدون يوميًا من 2 ظهرًا وحتى 8 مساءً. كما يمكنك الحجز إلكترونيًا من خلال زر "حجز الآن".</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">كيف أحجز استشارة نفسية؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">للحجز والاستشارة يرجى التواصل عبر واتساب: 01116677208 أو الاتصال على 01208727737.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">كيف أتطوع في الفريق؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">نرحب بكل متميز للانضمام لفريق عملنا. يمكنك إرسال سيرتك الذاتية عبر واتساب وسنتواصل معك.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">ما الذي يميز برامجكم؟ <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">نضمن التأهيل العملي والنظري المعتمد لجميع المتدربين، مع متابعة مستمرة وشهادات موثقة بختم شعار الجمهورية.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" id="contact">
+        <div class="social-links">
+            <a href="https://wa.me/201116677208" target="_blank" rel="noopener" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/mohammed.qootp" target="_blank" rel="noopener" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@d..mohammed.qootp" target="_blank" rel="noopener" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/mohammedqootb/" target="_blank" rel="noopener" title="انستجرام"><i class="fab fa-instagram"></i></a>
+            <a href="tel:01208727737" title="اتصال"><i class="fas fa-phone"></i></a>
+        </div>
+        <p>© 2026 <strong>أكاديمية د. محمد قطب</strong> – جميع الحقوق محفوظة</p>
+        <p style="margin-top:4px;font-size:0.8rem;">للاستفسار: 01116677208 | 01208727737</p>
+    </footer>
+
+    <!-- ==================== FLOAT NAV ==================== -->
+    <div class="float-nav">
+        <a href="https://wa.me/201116677208" class="wa" target="_blank" rel="noopener" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/mohammed.qootp" class="fb" target="_blank" rel="noopener" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@d..mohammed.qootp" class="tt" target="_blank" rel="noopener" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/mohammedqootb/" class="ig" target="_blank" rel="noopener" title="انستجرام"><i class="fab fa-instagram"></i></a>
+        <a href="tel:01208727737" class="call" title="اتصال هاتفي"><i class="fas fa-phone"></i></a>
+    </div>
+
+    <!-- ==================== BOOKING MODAL ==================== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle">حجز دبلومة</h3>
+            <p>أدخل بياناتك وسيتم تحويلك للواتساب لإتمام الحجز</p>
+            <input type="text" id="modalName" placeholder="الاسم الكامل">
+            <input type="tel" id="modalPhone" placeholder="رقم الهاتف (اختياري)">
+            <button class="btn-submit" onclick="submitBooking()">💬 إرسال عبر واتساب</button>
+            <div class="req-note" id="modalReq">الأوراق المطلوبة: صورة البطاقة</div>
+        </div>
+    </div>
+
+    <script>
+        // ============ NAVBAR SCROLL ============
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ============ HAMBURGER MENU ============
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ============ SLIDER DOTS ============
+        const dots = document.querySelectorAll('.slider-dots span');
+        const slidesTrack = document.querySelector('.slides-track');
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.dataset.slide);
+                slidesTrack.style.animation = 'none';
+                slidesTrack.style.transform = `translateX(${index * 33.333}%)`;
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                // Resume animation after 4 seconds
+                setTimeout(() => {
+                    slidesTrack.style.animation = 'slideAnimation 9s infinite ease-in-out';
+                    slidesTrack.style.transform = '';
+                }, 4000);
+            });
+        });
+        // Sync dots with animation
+        setInterval(() => {
+            const computed = getComputedStyle(slidesTrack);
+            const matrix = new DOMMatrixReadOnly(computed.transform);
+            const tx = matrix.m41;
+            const slideWidth = slidesTrack.offsetWidth / 3;
+            let activeIndex = Math.round(Math.abs(tx) / slideWidth);
+            if (activeIndex >= 3) activeIndex = 0;
+            if (activeIndex < 0) activeIndex = 0;
+            dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+        }, 500);
+
+        // ============ FAQ ACCORDION ============
+        function toggleFaq(item) {
+            const isOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+            // Open clicked if it wasn't open
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // ============ MODAL LOGIC ============
+        let currentDiploma = '';
+        let currentReq = '';
+
+        function openModal(diplomaName, requirements) {
+            currentDiploma = diplomaName;
+            currentReq = requirements;
+            document.getElementById('modalTitle').textContent = 'حجز: ' + diplomaName;
+            document.getElementById('modalReq').textContent = 'الأوراق المطلوبة: ' + requirements;
+            document.getElementById('modalName').value = '';
+            document.getElementById('modalPhone').value = '';
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('modalName').value.trim();
+            const phone = document.getElementById('modalPhone').value.trim();
+            if (!name) {
+                alert('يرجى إدخال اسمك على الأقل');
+                return;
+            }
+            let message = `أريد حجز ${currentDiploma}. الاسم: ${name}.`;
+            if (phone) message += ` الهاتف: ${phone}.`;
+            message += ` الأوراق: ${currentReq}`;
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/201116677208?text=${encoded}`, '_blank');
+            closeModal();
+        }
+
+        // Close modal on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ============ SMOOTH SCROLL FOR NAV LINKS ============
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = navbar.offsetHeight + 10;
+                    const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: position, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ============ ACTIVE NAV LINK ON SCROLL ============
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let scrollY = window.pageYOffset;
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - navbar.offsetHeight - 60;
+                const sectionId = section.getAttribute('id');
+                const link = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+                if (link && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
